@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "db:generate": "pnpm dlx prisma generate",
+    "db:push": "pnpm dlx prisma db push"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
