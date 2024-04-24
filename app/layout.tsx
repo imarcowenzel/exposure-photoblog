@@ -31,11 +31,11 @@ export default function RootLayout({
         <AuthProvider>
           <Sidebar />
           <MobileHeader />
-          <div className="h-full bg-secondary lg:ml-32">
-            <main>{children}</main>
+          <main className="h-full bg-secondary lg:ml-32">
+            {children}
             <Toaster position="top-right" richColors />
             <Footer />
-          </div>
+          </main>
         </AuthProvider>
       </body>
     </html>

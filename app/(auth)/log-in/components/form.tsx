@@ -12,12 +12,12 @@ import * as z from "zod";
 import { OAuthButtons } from "@/components/oauth-button";
 import { Button } from "@/components/ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -25,6 +25,7 @@ import { useLoading } from "@/hooks/use-loading";
 import { logInSchema } from "@/schemas";
 
 export const LogInForm = () => {
+  
   const { isLoading, loggingIn, setLoggingIn, setIsLoading } = useLoading();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const router = useRouter();
@@ -58,7 +59,6 @@ export const LogInForm = () => {
       }
 
       toast.success("Log in successfully!");
-
       router.push("/");
     } catch (error: any) {
       toast.error(error || "Something went wrong!");

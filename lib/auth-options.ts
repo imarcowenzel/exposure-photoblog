@@ -85,9 +85,15 @@ export const authOptions: NextAuthOptions = {
         session.user.id = dbUser.id;
         session.user.emailVerified = dbUser.emailVerified;
         session.user.username = dbUser.username;
+        session.user.hashedPassword = dbUser.id;
         session.user.image = dbUser.image;
         session.user.imageKey = dbUser.imageKey;
         session.user.posts = []; //TODO: ver o DB porque está sem o posts
+        session.user.accounts = [];
+        session.user.sessions = [];
+        session.user.createdAt = dbUser.createdAt;
+        session.user.updateAt = dbUser.updateAt;
+        
       }
 
       return session;

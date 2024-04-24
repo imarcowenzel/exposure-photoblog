@@ -22,13 +22,13 @@ export const Menu = () => {
         <div className="flex flex-col gap-7">
           <MenuItem href="/" pathname={pathname} Icon={Globe} label="Explore" />
           <MenuItem
-            href={`/${username}/profile`}
+            href={`/profile/${username}`}
             pathname={pathname}
             Icon={Smile}
             label="Profile"
           />
           <MenuItem
-            href={`/${username}/submit`}
+            href="/submit"
             pathname={pathname}
             Icon={Send}
             label="Submit"
@@ -44,7 +44,7 @@ export const Menu = () => {
                 label="Search"
               />
               <MenuItem
-                href={`/${username}/account`}
+                href="/account"
                 pathname={pathname}
                 Icon={Settings}
                 label="Account"

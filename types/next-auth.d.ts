@@ -8,9 +8,14 @@ declare module "next-auth" {
       email: string;
       emailVerified: Date | null;
       username: string;
+      hashedPassword: string;
       image: string | null;
       imageKey: string | null;
       posts: any[] | null;
+      accounts: any[] | null;
+      sessions: any[] | null;
+      createdAt: Date;
+      updateAt: Date;
     } & DefaultSession["user"];
   }
 }

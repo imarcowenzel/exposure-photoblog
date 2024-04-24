@@ -14,19 +14,17 @@ export const MenuMobile = () => {
 
   const username = session?.user.username;
 
-  console.log(session)
-
   return (
     <nav className="flex flex-col gap-7 px-4">
       <ul className="flex flex-col items-start gap-7">
         <MenuItemMobile href="/" Icon={Globe} label="Explore" />
         <MenuItemMobile
-          href={`/${username}/profile`}
+          href={`/profile/${username}`}
           Icon={Smile}
           label="Profile"
         />
         <MenuItemMobile
-          href={`/${username}/submit`}
+          href="/submit"
           Icon={Send}
           label="Submit"
         />
@@ -35,7 +33,7 @@ export const MenuMobile = () => {
           <>
             <MenuItemMobile href="/search" Icon={Search} label="Search" />
             <MenuItemMobile
-              href={`/${username}/account`}
+              href="/account"
               Icon={Settings}
               label="Account"
             />

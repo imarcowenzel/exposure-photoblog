@@ -9,24 +9,25 @@ type Props = {
   };
 };
 
-const SubmitPage = async ({ params }: Props) => {
-  const session = await auth();
+const ProfilePage = async ({ params }: Props) => {
 
-  const userPage = await db.user.findUnique({
-    where: { username: params.username },
-  });
+  const session = await auth();
 
   if (!session) {
     redirect("/log-in");
   }
 
+  const userPage = await db.user.findUnique({
+    where: { username: params.username },
+  });
+
   return (
     <div>
-      <h1>Submit</h1>
+      <h1>Profile</h1>
       <p>{session.user.username}</p>
       <p>{`User page: ${userPage?.username}`}</p>
     </div>
   );
 };
 
-export default SubmitPage;
+export default ProfilePage;

@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export async function generateUniqueUsername(firstName: string) {
   let username = `${firstName.toLowerCase()}${Math.floor(
-    Math.random() * 10000,
+    Math.random() * 10000
   )}`;
   const usernameExists = await db.user.findFirst({
     where: {
@@ -21,3 +21,9 @@ export async function generateUniqueUsername(firstName: string) {
   }
   return username;
 }
+
+export const formatter = new Intl.DateTimeFormat("en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
