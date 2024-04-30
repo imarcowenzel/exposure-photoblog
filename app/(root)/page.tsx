@@ -7,13 +7,13 @@ import { NoPosts } from "./components/no-posts";
 
 const HomePage = async () => {
   
-  const url = `${process.env.NEXTAUTH_URL}/api/posts`;
-  const res = await axios.get(url);
-  const posts: PostWithPhotoAndUser[] = res.data;
+  // const url = `${process.env.NEXTAUTH_URL}/api/posts`;
+  // const res = await axios.get(url);
+  // const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
     <section className="flex w-full flex-col gap-10 px-5 py-16 md:px-16 lg:h-dvh 2xl:px-24">
-      {posts.length !== 0 ? (
+      {/* {posts.length !== 0 ? (
         <>
           {" "}
           <div className="flex gap-2">
@@ -26,7 +26,7 @@ const HomePage = async () => {
         </>
       ) : (
         <NoPosts />
-      )}
+      )} */}
     </section>
   );
 };
