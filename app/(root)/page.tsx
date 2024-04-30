@@ -10,7 +10,6 @@ const HomePage = async () => {
   
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
-  if (res.status !== 200) return Error;
   const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
