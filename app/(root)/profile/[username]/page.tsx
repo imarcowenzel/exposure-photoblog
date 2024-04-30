@@ -23,7 +23,6 @@ const ProfilePage = async ({ params }: Props) => {
   const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`
   const res = await axios.get(url);
   const profileOwner: UserWithPosts = res.data;
-  if (!profileOwner) return NotFound;
 
   const session = await auth();
   const isOwner = session?.user.id === profileOwner.id ? true : false;

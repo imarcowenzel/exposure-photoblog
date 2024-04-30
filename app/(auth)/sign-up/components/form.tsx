@@ -59,7 +59,7 @@ export const SignUpForm = () => {
 
     try {
 
-      const url = `${process.env.NEXT_PUBLIC_URL}/api/users}`
+      const url = `${process.env.NEXT_PUBLIC_URL}/api/users`
       const res = await axios.post(url, data);
 
       if (res.status === 201) {
@@ -75,9 +75,9 @@ export const SignUpForm = () => {
         }
       }
     } catch (error: any) {
-      console.error(error.response);
+      console.error(error.response.data);
       toast.error(
-        error.response.data || "An error occurred while creating the user.",
+        error.response.data.message || "An error occurred while creating the user.",
       );
     } finally {
       setIsLoading(false);

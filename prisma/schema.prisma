@@ -68,7 +68,7 @@ model VefificationToken {
 model Post {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   photo     Photo?
   tags      String[]
   createdAt DateTime @default(now())

@@ -37,7 +37,7 @@ export const DeleteAccountModal = ({ user }: Props) => {
       }
     } catch (error: any) {
       console.error(error.response);
-      toast.error(error.response.data);
+      toast.error(error.response.data.message || "Something went wrong!");
     } finally {
       setIsLoading(false);
     }
