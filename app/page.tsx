@@ -2,8 +2,8 @@ import axios from "axios";
 import { ChevronRight } from "lucide-react";
 
 import { PostWithPhotoAndUser } from "@/types";
-import { Posts } from "./(root)/components/posts";
-import { NoPosts } from "./(root)/components/no-posts";
+import { Posts } from "./posts";
+import { NoPosts } from "./no-posts";
 
 const HomePage = async () => {
   
