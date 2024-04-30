@@ -1,12 +1,12 @@
 import axios from "axios";
 import { Metadata } from "next";
 
-import NotFound from "@/app/not-found";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth } from "@/lib/auth-options";
 import { UserWithPosts } from "@/types";
 import { NoPostsYets } from "./components/no-posts-yet";
 import { PostsFeed } from "./components/posts-feed";
+import NotFound from "@/app/not-found";
 
 type Props = {
   params: {
@@ -29,7 +29,7 @@ const ProfilePage = async ({ params }: Props) => {
   const isOwner = session?.user.id === profileOwner.id ? true : false;
 
   return (
-    <div className="flex w-full flex-col items-center gap-10 px-5 py-16 md:px-6 2xl:h-[calc(100dvh-470px)]">
+    <div className="flex w-full flex-col items-center gap-10 px-5 py-16 md:px-6 lg:h-dvh">
 
       <div className="flex flex-col items-center gap-5">
         <Avatar>

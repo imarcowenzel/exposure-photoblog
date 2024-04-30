@@ -96,13 +96,6 @@ export async function GET(req: Request) {
       include: { photo: true, user: true },
     });
 
-    if (!posts) {
-      return NextResponse.json(
-        { message: "No posts found." },
-        { status: 404 },
-      );
-    }
-
     return NextResponse.json(posts, { status: 200 });
 
   } catch (error: any) {
