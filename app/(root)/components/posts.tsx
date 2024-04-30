@@ -11,7 +11,7 @@ export const Posts = ({ posts }: Props) => {
 
   return (
 
-    <div className="grid grid-cols-2 items-baseline justify-center gap-x-6 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-20 2xl:grid-cols-5">
+    <div className="grid grid-cols-2 items-end justify-center gap-x-6 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-20 2xl:grid-cols-5">
 
       {posts.map((post) => (
 
@@ -19,9 +19,9 @@ export const Posts = ({ posts }: Props) => {
 
           <Link href={`/post/${post.id}`}>
             <Image
-              src={post?.photo?.url!}
+              src={post.photo.url}
               priority
-              alt={`${post.user?.username}\`s post`}
+              alt={`${post.user.username}\`s post`}
               height={400}
               width={400}
             />
@@ -35,8 +35,8 @@ export const Posts = ({ posts }: Props) => {
             >
               <div className="relative h-6 w-6">
                 <Image
-                  src={post.user?.image || "/assets/profile-picture.svg"}
-                  alt={`${post.user?.username}\`s profile picture`}
+                  src={post.user.image || "/assets/profile-picture.svg"}
+                  alt={`${post.user.username}\`s profile picture`}
                   fill
                   priority
                   sizes="100svh"
@@ -44,7 +44,7 @@ export const Posts = ({ posts }: Props) => {
                 />
               </div>
 
-              <p className="text-xs text-secondary">{`${post.user?.username}`}</p>
+              <p className="text-xs text-secondary">{`${post.user.username}`}</p>
             </Link>
             
           </figcaption>

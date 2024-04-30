@@ -11,6 +11,18 @@ export async function POST(req: NextRequest) {
 
     const { username, email, password } = body;
 
+    if (!username) {
+      return NextResponse.json("Please provide a username.", { status: 400 });
+    }
+
+    if (!email) {
+      return NextResponse.json("Please provide a email.", { status: 400 });
+    }
+
+    if (!password) {
+      return NextResponse.json("Please provide a password.", { status: 400 });
+    }
+
     const existingEmailOrUsername = await db.user.findFirst({
       where: {
         OR: [{ email }, { name: username }],
@@ -34,7 +46,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json("User created.", { status: 201 });
+    return NextResponse.json("User created successfully!", { status: 201 });
 
   } catch (error: any) {
 

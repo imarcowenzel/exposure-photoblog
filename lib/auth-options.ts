@@ -76,27 +76,30 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+
     async session({ session }) {
+
       const dbUser = await db.user.findUnique({
-        where: { email: session.user?.email as string },
+        where: { email: session.user?.email as string }, include: {accounts: true, posts: true, sessions: true},
       });
 
       if (session && session.user && dbUser) {
+
         session.user.id = dbUser.id;
         session.user.emailVerified = dbUser.emailVerified;
         session.user.username = dbUser.username;
         session.user.hashedPassword = dbUser.id;
         session.user.image = dbUser.image;
         session.user.imageKey = dbUser.imageKey;
-        session.user.posts = []; //TODO: ver o DB porque está sem o posts
-        session.user.accounts = [];
-        session.user.sessions = [];
+        session.user.posts = dbUser.posts;
+        session.user.accounts = dbUser.accounts;
         session.user.createdAt = dbUser.createdAt;
         session.user.updateAt = dbUser.updateAt;
         
       }
 
       return session;
+
     },
   },
   session: { strategy: "jwt" },

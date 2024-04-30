@@ -9,15 +9,16 @@ const Error = ({
   error: Error & { digest?: string };
   reset: () => void;
 }) => {
-    
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <section className="flex min-h-[calc(100dvh-497px)] w-full flex-col items-center justify-center gap-y-10 py-12 md:min-h-[calc(100dvh-321px)] lg:min-h-[calc(100dvh-256.98px)] h-[600px] md:h-0">
-      <h1 className="text-2xl font-semibold">Something went wrong!</h1>
+    <section className="flex w-full flex-col gap-10 px-5 py-16 md:px-16 2xl:h-[calc(100dvh-470px)] 2xl:px-24">
+      <div className="flex h-full flex-col items-center justify-center gap-4">
+      <h1 className="text-4xl font-semibold">500 Error</h1>
+        <h1 className="text-lg font-medium">Something went wrong!</h1>
+      </div>
     </section>
   );
 };

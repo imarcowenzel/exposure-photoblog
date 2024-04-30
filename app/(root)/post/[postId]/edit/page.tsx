@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { EditSubmitPhotoForm } from "@/components/edit-submit-photo-form";
 import { auth } from "@/lib/auth-options";
 import { PostWithPhotoAndUser } from "@/types";
+import NotFound from "@/app/not-found";
 
 type Props = {
   params: { postId: string };
@@ -14,9 +15,10 @@ const EditPage = async ({ params }: Props) => {
   const session = await auth();
   if (!session) redirect("/log-in");
 
-  const url = `http://localhost:3000/api/posts/${params.postId}`;
+  const url = `${process.env.NEXTAUTH_URL}/api/posts/${params.postId}`;
   const res = await axios.get(url);
   const post: PostWithPhotoAndUser = res.data;
+  if (!post) return NotFound;
 
   if (session.user.id !== post.userId) redirect("/");
 

@@ -28,7 +28,11 @@ export const SearchForm = () => {
   });
 
   async function onSubmit(data: z.infer<typeof searchSchema>) {
-    console.log(data);
+    const url = new URL(window.location.href);
+    const searchParams = new URLSearchParams(url.search);
+    searchParams.set("query", data.query);
+    url.search = searchParams.toString();
+    window.location.href = url.toString();
   }
 
   return (
@@ -41,8 +45,8 @@ export const SearchForm = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="Search"
-                  className="placeholder:text-lg md:placeholder:text-2xl text-lg md:text-2xl"
+                  placeholder="Search for tag or profile"
+                  className="outline-none border-none placeholder:text-lg md:placeholder:text-2xl text-lg md:text-2xl px-0"
                 />
               </FormControl>
               {field.value && (

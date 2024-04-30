@@ -53,11 +53,14 @@ export const SignUpForm = () => {
   });
 
   async function onSubmit(data: SignUpSchema) {
+
     setIsLoading(true);
     setSigningUp(true);
 
     try {
-      const res = await axios.post("/api/users", data);
+
+      const url = `${process.env.NEXT_PUBLIC_URL/api/users}`
+      const res = await axios.post(url, data);
 
       if (res.status === 201) {
         const res = await signIn("credentials", {
@@ -145,6 +148,7 @@ export const SignUpForm = () => {
                 />
               </FormControl>
               <button
+              type="button"
                 onClick={() => toggleVisibility("password")}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >
@@ -175,6 +179,7 @@ export const SignUpForm = () => {
                 />
               </FormControl>
               <button
+              type="button"
                 onClick={() => toggleVisibility("confirmPassword")}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >

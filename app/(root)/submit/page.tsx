@@ -14,8 +14,7 @@ const SubmitPage = () => {
   if (!session) redirect("/log-in");
 
   return (
-    <section className="flex w-full flex-col gap-10 px-5 py-16 md:items-center md:px-12 2xl:min-h-dvh 2xl:px-24">
-
+    <section className="flex w-full flex-col gap-10 px-5 py-16 items-center md:justify-center md:px-12 2xl:min-h-dvh 2xl:px-24">
       <div className="flex max-w-3xl flex-col items-center justify-center gap-6 md:w-full md:gap-12">
         <SelectPhotoForm />
         {photoPreview && <EditSubmitPhotoForm user={session.user} />}

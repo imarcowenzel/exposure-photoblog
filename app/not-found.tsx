@@ -1,25 +1,24 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { FaRegFaceSadTear } from "react-icons/fa6";
 
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
+  
   const router = useRouter();
 
   return (
-    <section className="flex min-h-[calc(100dvh-497px)] w-full flex-col items-center justify-center gap-y-10 py-12 md:min-h-[calc(100dvh-321px)] lg:min-h-[calc(100dvh-256.98px)] h-[768px] md:h-0">
-      <div className="flex flex-col items-center justify-center gap-y-4">
-        <FaRegFaceSadTear className="text-4xl" />
-        <h1 className="text-2xl font-bold">Page not found!</h1>
-        <p
-          onClick={() => router.back()}
-          className={cn("cursor-pointer")}
+    <section className="flex w-full flex-col gap-10 px-5 py-16 md:px-16 2xl:h-[calc(100dvh-470px)] 2xl:px-24">
+      <div className="flex flex-col items-center h-full justify-center gap-4">
+        <h1 className="text-4xl font-semibold">404 Error</h1>
+        <h1 className="text-lg font-medium">Sorry, page not found</h1>
+        <Button
+          onClick={() => router.push("/")}
+          variant={"outline"}
         >
-          Go back.
-        </p>
+          Back to home.
+        </Button>
       </div>
     </section>
   );

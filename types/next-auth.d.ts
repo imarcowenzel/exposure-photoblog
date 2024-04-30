@@ -1,4 +1,5 @@
-import NextAuth, { DefaultSession } from "next-auth";
+import { Account, Post, Session } from "@prisma/client";
+import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
   interface Session {
@@ -11,9 +12,9 @@ declare module "next-auth" {
       hashedPassword: string;
       image: string | null;
       imageKey: string | null;
-      posts: any[] | null;
-      accounts: any[] | null;
-      sessions: any[] | null;
+      posts: Post[];
+      accounts: Account[];
+      sessions: Session[];
       createdAt: Date;
       updateAt: Date;
     } & DefaultSession["user"];

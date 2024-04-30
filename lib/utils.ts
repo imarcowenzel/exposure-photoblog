@@ -23,7 +23,10 @@ export async function generateUniqueUsername(firstName: string) {
 }
 
 export const formatter = new Intl.DateTimeFormat("en-GB", {
+  hour12: false,
   year: "numeric",
   month: "long",
   day: "numeric",
+  hour: "numeric",
+  minute: "numeric"
 });

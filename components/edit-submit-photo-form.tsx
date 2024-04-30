@@ -21,15 +21,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useSubmit } from "@/hooks/use-submit";
+import { editSchema } from "@/schemas";
+import { PostWithPhotoAndUser } from "@/types/index";
 import { useUploadThing } from "@/utils/uploadthing";
-import { PostWithPhotoAndUser } from "../types/index";
 import { CloseButton } from "./close-button";
-
-const formSchema = z.object({
-  tags: z
-    .string()
-    .min(2, { message: "Tag must contain at least 2 characters(s)" }),
-});
 
 type Props = {
   user: User;
@@ -37,61 +32,92 @@ type Props = {
 };
 
 export const EditSubmitPhotoForm = ({ user, post }: Props) => {
-  
+
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
-  const { photoUrl, photoPreview, setPhotoPreview } = useSubmit();
   const { startUpload } = useUploadThing("imageUploader");
+  const { photoUrl, photoPreview, setPhotoPreview } = useSubmit();
 
-  const buttonText = post ? "Edit" : "Post"
+  const buttonText = post ? "Edit" : "Post";
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof editSchema>>({
+    resolver: zodResolver(editSchema),
     defaultValues: {
       tags: post?.tags.join(",") || "",
     },
   });
 
+  function onChange(value: string, field: any) {
+    const tagsArray = value.split(",").map((tag) => tag.trim().toLowerCase());
+    setTags([...tagsArray]);
+    field.onChange({ target: { value } });
+  }
+
   async function onSubmit() {
 
-    try {
+    if (post) {
 
-      const imgRes = await startUpload(photoUrl);
+      try {
 
-      if (imgRes && imgRes.length > 0 && user) {
-        const data = {
-          url: imgRes?.[0].url,
-          imageKey: imgRes?.[0].key,
-          userId: user.id,
-          tags: tags,
-        };
+        const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`;
+        const res = await axios.put(url, { tags });
 
-        const res = await axios.post("/api/posts", data);
-
-        if (res.status === 201) {
-          toast.success("Post created!");
-          router.replace(`/profile/${user.username}`);
+        if (res.status === 200) {
+          toast.success(res.data.message);
+          window.location.href = `/post/${post.id}`;
         }
 
+      } catch (error: any) {
+
+        console.error(error.data);
+        toast.error(error.response?.data.message || "Something went wrong!")
+        
       }
 
-    } catch (error: any) {
+    } else {
 
-      console.log("Error", error);
-      toast.error("Failed to submit the post! Please try again.");
+      try {
 
+        const imgRes = await startUpload(photoUrl);
+
+        if (imgRes && imgRes.length > 0 && user) {
+
+          const data = {
+            url: imgRes?.[0].url,
+            key: imgRes?.[0].key,
+            userId: user.id,
+            tags: tags,
+          };
+
+          const url = `${process.env.NEXT_PUBLIC_URL}/api/posts`;
+
+          const res = await axios.post(url, data);
+
+          if (res.status === 201) {
+            toast.success(res.data.message);
+            router.replace(`/profile/${user.username}`);
+          }
+
+        }
+
+      } catch (error: any) {
+
+        console.log("Error", error.response.data);
+        toast.error(
+          error.response.data.message || "Something went wrong!",
+        );
+
+      }
     }
-
   }
 
   return (
     <>
-
       {post && <CloseButton />}
 
       <Image
         src={post?.photo?.url || photoPreview}
-        alt={JSON.stringify(post?.tags) || "Photo Preview"}
+        alt="Photo Preview"
         priority
         width={1368}
         height={1368}
@@ -101,7 +127,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
         <form
           noValidate
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-y-4"
+          className="flex w-full flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -115,28 +141,24 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
                     name="tags"
                     aria-label="Tags"
                     placeholder="Add a tag (separate each tag with a comma)"
-                    onChange={({ target: { value } }) => {
-                      // Split the input value by commas, trim each tag, and convert to lowercase
-                      const tagsArray = value
-                        .split(",")
-                        .map((tag) => tag.trim().toLowerCase());
-                      // Update the 'tags' state with the trimmed and lowercase tags array
-                      setTags([...tagsArray]);
-                      field.onChange({ target: { value } });
-                    }}
+                    onChange={({ target: { value } }) => onChange(value, field)}
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
+
           <Button
             disabled={form.formState.isSubmitting}
             variant={"outline"}
             className="w-full"
           >
-            {!form.formState.isSubmitting ? buttonText : "Loading"}
+            {!form.formState.isSubmitting
+              ? buttonText
+              : post
+                ? "Editing..."
+                : "Posting..."}
           </Button>
 
           {post ? (
@@ -152,7 +174,6 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
               Delete
             </Button>
           )}
-
         </form>
       </Form>
     </>

@@ -47,8 +47,8 @@ const EditForm = ({ user, post }: Props) => {
   async function onSubmit() {
     // TODO: is loading
     try {
-      const url = `http://localhost:3000/api/posts/${post.id}`;
-      const res = await axios.put(url, { tags, user });
+      const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`;
+      const res = await axios.put(url, { tags });
 
       if (res.status !== 200) {
         console.log(res.data);
@@ -66,13 +66,12 @@ const EditForm = ({ user, post }: Props) => {
   }
 
   return (
-    <section className="flex min-h-[calc(100dvh-1404px)] md:min-h-[calc(100dvh-1228px]) lg:min-h-[calc(100dvh-358px)] w-full flex-col items-center justify-center gap-y-10 py-6">
+    <section className="md:min-h-[calc(100dvh-1228px]) flex min-h-[calc(100dvh-1404px)] w-full flex-col items-center justify-center gap-y-10 py-6 lg:min-h-[calc(100dvh-358px)]">
       <div className="flex h-full w-full flex-col items-start gap-y-6 px-5 md:gap-y-12">
-
         <div className="flex w-full flex-col items-center gap-y-4 pt-2.5">
           <div className="flex w-full justify-center">
             <Image
-              src={post.image?.url!} //TODO: check null of url
+              src={post.photo.url} //TODO: check null of url
               alt={JSON.stringify(post.tags)}
               width={500}
               height={500}

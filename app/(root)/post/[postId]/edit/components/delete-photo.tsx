@@ -1,8 +1,9 @@
 "use client";
 
-import axios, { AxiosError } from "axios";
-import { redirect, useParams, useRouter } from "next/navigation";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,26 +15,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useSession } from "next-auth/react";
-import Error from "next/error";
 
 export const DeletePhoto = () => {
+
   const { postId } = useParams();
   const router = useRouter();
   const { data: session } = useSession();
-
-  if (!session) redirect("/log-in");
 
   // TODO: Is Loading, melhorar a function
 
   async function onSubmit() {
     try {
-      // TODO: handle if no user the owner of the post
-      const url = `http://localhost:3000/api/posts/${postId}`;
-      const res = await axios.delete(url, { data: session });
+      const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${postId}`;
+      const res = await axios.delete(url);
       if (res.status === 200) {
         toast.success(res.data.message);
-        router.push(`/profile/${session?.user.username}`);
+        router.push(`/profile/${session?.user.username}`)
       }
     } catch (error: any) {
       console.log("Error:", error);
