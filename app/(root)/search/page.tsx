@@ -15,12 +15,11 @@ const SearchPage = async ({
 }: {
   searchParams: { query: string };
 }) => {
+
   let results = null;
 
-  console.log(!results);
-
   const url = qs.stringifyUrl({
-    url: "http://localhost:3000/api/posts/",
+    url: `${process.env.NEXTAUTH_URL}/api/posts/`,
     query: {
       query: searchParams.query,
     },
