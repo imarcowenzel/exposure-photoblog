@@ -59,7 +59,7 @@ export const SignUpForm = () => {
 
     try {
 
-      const url = `${process.env.NEXT_PUBLIC_URL/api/users}`
+      const url = `${process.env.NEXT_PUBLIC_URL}/api/users}`
       const res = await axios.post(url, data);
 
       if (res.status === 201) {
