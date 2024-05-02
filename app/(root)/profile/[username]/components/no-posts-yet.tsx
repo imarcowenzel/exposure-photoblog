@@ -11,7 +11,7 @@ export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
   return (
     <div className="flex h-full w-full items-center justify-center">
       {loggedInUserIsOwner ? (
-        <h3 className="text-center 2xl:text-xl">
+        <h3 className="text-center xl:text-xl">
           You haven&apos;t shared any posts yet!
           <br />
           <Link
@@ -22,7 +22,7 @@ export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
           </Link>
         </h3>
       ) : (
-        <h3 className="text-center 2xl:text-xl">
+        <h3 className="text-center xl:text-xl">
           This user hasn&apos;t shared any posts yet.
         </h3>
       )}

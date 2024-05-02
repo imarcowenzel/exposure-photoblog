@@ -5,6 +5,8 @@ import qs from "query-string";
 import { Separator } from "@/components/ui/separator";
 import { SearchForm } from "./components/form";
 import { PostsFeed } from "@/components/posts-feed";
+import { NoResults } from "./components/no-results";
+import { cn } from "@/lib/utils";
 
 type MetadataProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -13,11 +15,10 @@ type MetadataProps = {
 export async function generateMetadata({
   searchParams,
 }: MetadataProps): Promise<Metadata> {
-
   const query = searchParams.query;
 
   let title = "Search | EXPOSURE";
-  
+
   if (query !== undefined && query !== null) {
     title = `${query} - Search | EXPOSURE`;
   }
@@ -25,7 +26,6 @@ export async function generateMetadata({
   return {
     title: title,
   };
-  
 }
 
 const SearchPage = async ({
@@ -33,7 +33,6 @@ const SearchPage = async ({
 }: {
   searchParams: { query: string };
 }) => {
-
   let results = null;
 
   // TODO: search alway at lowercase
@@ -51,8 +50,12 @@ const SearchPage = async ({
   }
 
   return (
-    <section className="flex w-full flex-col items-center gap-10 px-5 py-16 md:px-16 2xl:h-dvh 2xl:px-24">
-
+    <section
+      className={cn(
+        "flex w-full flex-col items-center gap-10 px-5 py-16 md:px-16 2xl:h-dvh 2xl:px-24",
+        results && "h-full",
+      )}
+    >
       <div className="flex flex-col">
         <SearchForm />
         <Separator className="h-[2px]" />
@@ -61,7 +64,7 @@ const SearchPage = async ({
       {!results ? null : !!results.length ? (
         <PostsFeed posts={results} />
       ) : (
-        <p>No results found!</p>
+        <NoResults />
       )}
     </section>
   );
