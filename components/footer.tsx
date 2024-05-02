@@ -42,7 +42,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary flex w-full flex-col gap-10 px-10 pb-8 pt-20">
+    <footer className="flex w-full flex-col gap-10 bg-primary px-5 pb-8 pt-20 text-primary md:px-10">
       <section className="flex w-full flex-col items-start gap-12 lg:flex-col-reverse">
         <div className="flex w-full flex-col items-start gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <Link
@@ -53,7 +53,7 @@ export const Footer = () => {
             <span className="text-base font-semibold uppercase">Exposure</span>
           </Link>
 
-          <div className="text-primary flex w-full flex-col gap-5 lg:flex-row lg:items-center lg:justify-end lg:text-sm">
+          <div className="flex w-full flex-col gap-5 text-primary lg:flex-row lg:items-center lg:justify-end lg:text-sm">
             <button className="rounded-3xl border border-white px-4 py-2 text-left font-medium uppercase hover:bg-white/10">
               Try for free
             </button>
@@ -84,7 +84,7 @@ export const Footer = () => {
         </div>
       </section>
 
-      <section className="text-secondary flex w-full flex-col justify-between gap-y-10 px-1 text-xs md:flex-row">
+      <section className="flex w-full flex-col justify-between gap-y-10 px-1 text-xs text-secondary md:flex-row">
         <div className="flex flex-col gap-y-6 md:flex-row md:gap-x-10 md:gap-y-0">
           <Link href={"/"}>Terms of Use</Link>
           <Link href={"/"}>Privacy Policy</Link>

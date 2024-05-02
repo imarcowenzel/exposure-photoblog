@@ -3,6 +3,7 @@ import { LucideIcon } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 type Props = {
   href: string;
@@ -13,9 +14,12 @@ type Props = {
 export const MenuItemMobile = ({ href, Icon, label }: Props) => {
   return (
     <li
-      className={buttonVariants({
-        variant: "menuItemMobile",
-      })}
+      className={cn(
+        buttonVariants({
+          variant: "menuItemMobile",
+        }),
+        "px-0",
+      )}
     >
       <SheetClose asChild>
         <Link href={href} className="flex w-full items-center gap-2">

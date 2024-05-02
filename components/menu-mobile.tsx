@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
 
 export const MenuMobile = () => {
-  const { data: session } = useSession();
 
+  const { data: session } = useSession();
   const username = session?.user.username;
 
   return (
     <nav className="flex flex-col gap-7 px-4">
+
       <ul className="flex flex-col items-start gap-7">
+
         <MenuItemMobile href="/" Icon={Globe} label="Explore" />
         <MenuItemMobile
           href={`/profile/${username}`}

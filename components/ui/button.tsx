@@ -24,7 +24,7 @@ const buttonVariants = cva(
         google:
           "flex w-full justify-between gap-x-2 text-base rounded-3xl border border-[hsl(0,0%,45%)] bg-white py-6 font-medium text-black",
         menuItem: "w-full cursor-pointer rounded-none transition-all duration-500 ease-in-out hover:bg-accent hover:bg-gray-900 hover:text-accent-foreground hover:text-primary",
-        menuItemMobile: "w-full cursor-pointer px-0 rounded-none text-primary text-3xl transition-all ease-in-out duration-500",
+        menuItemMobile: "w-full cursor-pointer rounded-none text-primary text-xl transition-all ease-in-out duration-500",
         ghost:
           "hover:bg-accent hover:text-accent-foreground transition-all ease-in-out duration-500",
         link: "text-primary underline-offset-4 hover:underline transition-all ease-in-out duration-500",

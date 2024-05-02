@@ -9,7 +9,7 @@ export const MobileSidebar = () => {
       <SheetTrigger>
         <MenuIcon className="text-primary" />
       </SheetTrigger>
-      <SheetContent className="z-[100] w-full px-0 pt-20 flex flex-col gap-7">
+      <SheetContent className="z-[100] w-full px-0 pt-14 flex flex-col gap-7">
         <MenuMobile />
       </SheetContent>
     </Sheet>
