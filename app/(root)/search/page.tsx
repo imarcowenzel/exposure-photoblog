@@ -53,7 +53,7 @@ const SearchPage = async ({
     <section
       className={cn(
         "flex w-full flex-col items-center gap-10 px-5 py-16 md:px-16 2xl:h-dvh 2xl:px-24",
-        results && "h-full",
+        results.lenght === 0 && "h-full",
       )}
     >
       <div className="flex flex-col">
@@ -61,7 +61,7 @@ const SearchPage = async ({
         <Separator className="h-[2px]" />
       </div>
 
-      {!results ? null : !!results.length ? (
+      {!results ? null : results.length !== 0 ? (
         <PostsFeed posts={results} />
       ) : (
         <NoResults />
