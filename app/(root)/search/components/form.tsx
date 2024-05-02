@@ -46,7 +46,7 @@ export const SearchForm = () => {
                 <Input
                   {...field}
                   placeholder="Search for tag or profile"
-                  className="outline-none border-none placeholder:text-lg md:placeholder:text-2xl text-lg md:text-2xl px-0"
+                  className="outline-none bg-transparent border-none placeholder:text-lg md:placeholder:text-2xl text-lg md:text-2xl px-0"
                 />
               </FormControl>
               {field.value && (

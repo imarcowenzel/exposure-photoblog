@@ -36,7 +36,6 @@ const SearchPage = async ({
   let results = null;
 
   // TODO: search alway at lowercase
-
   const url = qs.stringifyUrl({
     url: `${process.env.NEXTAUTH_URL}/api/posts/`,
     query: {
