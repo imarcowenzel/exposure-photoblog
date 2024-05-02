@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
 
 export const MenuMobile = () => {
-  
   const { data: session } = useSession();
 
   const username = session?.user.username;
@@ -23,20 +22,12 @@ export const MenuMobile = () => {
           Icon={Smile}
           label="Profile"
         />
-        <MenuItemMobile
-          href="/submit"
-          Icon={Send}
-          label="Submit"
-        />
+        <MenuItemMobile href="/search" Icon={Search} label="Search" />
 
         {session ? (
           <>
-            <MenuItemMobile href="/search" Icon={Search} label="Search" />
-            <MenuItemMobile
-              href="/account"
-              Icon={Settings}
-              label="Account"
-            />
+            <MenuItemMobile href="/submit" Icon={Send} label="Submit" />
+            <MenuItemMobile href="/account" Icon={Settings} label="Account" />
           </>
         ) : (
           <div className="flex w-full flex-col gap-4 text-primary md:flex-row md:items-center md:justify-between">

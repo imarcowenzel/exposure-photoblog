@@ -121,6 +121,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
         priority
         width={1368}
         height={1368}
+        className="max-h-dvh w-dvw md:w-auto" 
       />
 
       <Form {...form}>

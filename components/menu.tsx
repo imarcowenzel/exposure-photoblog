@@ -9,11 +9,10 @@ import { MenuItem } from "@/components/menu-item";
 import { Button } from "@/components/ui/button";
 
 export const Menu = () => {
-  
   const pathname = usePathname();
   const { data: session } = useSession();
 
- const username = session?.user.username;
+  const username = session?.user.username;
 
   return (
     <nav className="h-full w-full">
@@ -28,20 +27,20 @@ export const Menu = () => {
             label="Profile"
           />
           <MenuItem
-            href="/submit"
+            href="/search"
             pathname={pathname}
-            Icon={Send}
-            label="Submit"
+            Icon={Search}
+            label="Search"
           />
         </div>
         <div className="flex w-full flex-col gap-5">
           {session ? (
             <>
               <MenuItem
-                href="/search"
+                href="/submit"
                 pathname={pathname}
-                Icon={Search}
-                label="Search"
+                Icon={Send}
+                label="Submit"
               />
               <MenuItem
                 href="/account"
