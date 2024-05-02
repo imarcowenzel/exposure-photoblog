@@ -1,12 +1,11 @@
 import axios from "axios";
 import { ChevronRight } from "lucide-react";
 
+import { PostsFeed } from "@/components/posts-feed";
 import { PostWithPhotoAndUser } from "@/types";
-import { Posts } from "./components/posts";
 import { NoPosts } from "./components/no-posts";
 
 const HomePage = async () => {
-  
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
   const posts: PostWithPhotoAndUser[] = res.data;
@@ -21,7 +20,7 @@ const HomePage = async () => {
               From the community
             </h1>
           </div>
-          <Posts posts={posts} />
+          <PostsFeed posts={posts} />
         </>
       ) : (
         <NoPosts />

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 const PostPage = async ({ params }: Props) => {
+  
   const session = await auth();
   const url = `${process.env.NEXTAUTH_URL}/api/posts/${params.postId}`;
   const res = await axios.get(url);
@@ -31,7 +32,7 @@ const PostPage = async ({ params }: Props) => {
 
   return (
     <section className="flex w-full flex-col items-center justify-center 2xl:min-h-[calc(100dvh-470px)]">
-      <div className="flex w-full max-w-[1280px] flex-col gap-3 md:mt-8 md:gap-6 md:px-24 ">
+      <div className="flex w-full max-w-[1500px] flex-col gap-3 md:mt-8 md:gap-6 md:px-24 ">
         {/* Post Top */}
         <div className="w-dvw md:w-auto">
           <Image
@@ -40,7 +41,7 @@ const PostPage = async ({ params }: Props) => {
             width={1368}
             height={1368}
             priority
-            className="w-full object-cover md:object-contain"
+            className="w-full object-cover md:object-contain max-h-dvh"
           />
         </div>
         {/* Post Bottom */}

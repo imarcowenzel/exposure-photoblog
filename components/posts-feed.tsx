@@ -7,11 +7,11 @@ type Props = {
   posts: PostWithPhotoAndUser[];
 };
 
-export const Posts = ({ posts }: Props) => {
+export const PostsFeed = ({ posts }: Props) => {
 
   return (
 
-    <div className="grid grid-cols-1 items-end justify-center gap-x-6 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-20 2xl:grid-cols-5">
+    <div className="grid grid-cols-1 items-end justify-center gap-x-6 gap-y-8 md:grid-cols-4 md:gap-x-6 md:gap-y-20 lg:grid-cols-5">
 
       {posts.map((post) => (
 
@@ -54,5 +54,6 @@ export const Posts = ({ posts }: Props) => {
       ))}
 
     </div>
+    
   );
 };

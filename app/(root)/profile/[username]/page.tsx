@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth } from "@/lib/auth-options";
 import { UserWithPosts } from "@/types";
 import { NoPostsYets } from "./components/no-posts-yet";
-import { PostsFeed } from "./components/posts-feed";
+import { PostsFeed } from "@/components/posts-feed";
 
 type MetadataProps = {
   params: { username: string };

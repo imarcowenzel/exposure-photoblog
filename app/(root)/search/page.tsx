@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import qs from "query-string";
 
 import { Separator } from "@/components/ui/separator";
-import { PostsFeed } from "../profile/[username]/components/posts-feed";
 import { SearchForm } from "./components/form";
+import { PostsFeed } from "@/components/posts-feed";
 
 type MetadataProps = {
   searchParams: { [key: string]: string | string[] | undefined };
