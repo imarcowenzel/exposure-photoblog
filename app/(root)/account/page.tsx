@@ -10,7 +10,7 @@ import { PasswordForm } from "./components/password-form";
 import { UsernameForm } from "./components/username-form";
 
 export const metadata: Metadata = {
-  title: "EXPOSURE | Account",
+  title: "Account | EXPOSURE",
 };
 
 const AccountPage = async () => {

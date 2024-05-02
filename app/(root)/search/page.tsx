@@ -6,9 +6,27 @@ import { Separator } from "@/components/ui/separator";
 import { PostsFeed } from "../profile/[username]/components/posts-feed";
 import { SearchForm } from "./components/form";
 
-export const metadata: Metadata = {
-  title: "EXPOSURE | Search",
+type MetadataProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
 };
+
+export async function generateMetadata({
+  searchParams,
+}: MetadataProps): Promise<Metadata> {
+
+  const query = searchParams.query;
+
+  let title = "Search | EXPOSURE";
+  
+  if (query !== undefined && query !== null) {
+    title = `${query} - Search | EXPOSURE`;
+  }
+
+  return {
+    title: title,
+  };
+  
+}
 
 const SearchPage = async ({
   searchParams,
@@ -16,20 +34,21 @@ const SearchPage = async ({
   searchParams: { query: string };
 }) => {
 
-  // let results = null;
+  let results = null;
 
-  // const url = qs.stringifyUrl({
-  //   url: `${process.env.NEXTAUTH_URL}/api/posts/`,
-  //   query: {
-  //     query: searchParams.query,
-  //   },
-  // });
+  // TODO: search alway at lowercase
 
-  // if (searchParams.query) {
-  //   const res = await axios.get(url);
+  const url = qs.stringifyUrl({
+    url: `${process.env.NEXTAUTH_URL}/api/posts/`,
+    query: {
+      query: searchParams.query,
+    },
+  });
 
-  //   results = res.data;
-  // }
+  if (searchParams.query) {
+    const res = await axios.get(url);
+    results = res.data;
+  }
 
   return (
     <section className="flex w-full flex-col items-center gap-10 px-5 py-16 md:px-16 2xl:h-[calc(100dvh-470px)] 2xl:px-24">
@@ -38,12 +57,12 @@ const SearchPage = async ({
         <Separator className="h-[2px]" />
       </div>
 
-      {/* {!results ? null : !!results.length ? (
+      {!results ? null : !!results.length ? (
         // TODO: put the profile user at the base of the post
         <PostsFeed posts={results} />
       ) : (
         <p>No results found!</p>
-      )} */}
+      )}
     </section>
   );
 };

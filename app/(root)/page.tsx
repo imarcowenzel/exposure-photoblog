@@ -15,13 +15,12 @@ const HomePage = async () => {
     <section className="flex w-full flex-col gap-10 px-5 py-16 md:px-16 lg:h-dvh 2xl:px-24">
       {posts.length !== 0 ? (
         <>
-          {" "}
           <div className="flex gap-2">
             <ChevronRight size={36} strokeWidth={3} />
             <h1 className="text-3xl font-medium uppercase md:text-4xl">
               From the community
             </h1>
-          </div>{" "}
+          </div>
           <Posts posts={posts} />
         </>
       ) : (

@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 type Props = {
-  isOwner: boolean;
+  loggedInUserIsOwner: boolean;
 };
 
-export const NoPostsYets = ({ isOwner }: Props) => {
+export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
   // TODO: improve style css
   return (
-    <div className="flex items-center justify-center">
-      {isOwner ? (
+    <div className="flex items-center justify-center w-full h-full">
+      {loggedInUserIsOwner ? (
         <h3 className="text-center text-sm">
           You have no posts yet!
           <br />
