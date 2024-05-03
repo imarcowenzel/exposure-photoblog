@@ -42,7 +42,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="flex w-full flex-col gap-10 bg-primary px-5 pb-8 pt-20 text-primary md:px-10">
+    <footer className="flex w-full flex-col gap-10 bg-primary px-5 pb-10 pt-20 text-primary md:px-10">
       <section className="flex w-full flex-col items-start gap-12 lg:flex-col-reverse">
         <div className="flex w-full flex-col items-start gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <Link

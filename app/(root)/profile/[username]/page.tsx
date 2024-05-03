@@ -30,6 +30,7 @@ type Props = {
 };
 
 const ProfilePage = async ({ params }: Props) => {
+
   const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
@@ -39,6 +40,7 @@ const ProfilePage = async ({ params }: Props) => {
     session?.user.id === profileUser.id ? true : false;
 
   return (
+
     <section
       className={cn(
         "flex w-full flex-col items-center gap-10 px-5 py-16 md:px-6 2xl:min-h-dvh",
@@ -64,6 +66,7 @@ const ProfilePage = async ({ params }: Props) => {
       ) : (
         <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
       )}
+      
     </section>
   );
 };
