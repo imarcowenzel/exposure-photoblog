@@ -10,7 +10,7 @@ const HomePage = async () => {
 
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
-  const posts: PostWithPhotoAndUser[] = res.data;
+  const posts: PostWithPhotoAndUser[] = [];
 
   return (
     <section
