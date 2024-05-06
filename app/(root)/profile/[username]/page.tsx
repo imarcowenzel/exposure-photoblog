@@ -30,26 +30,23 @@ type Props = {
 };
 
 const ProfilePage = async ({ params }: Props) => {
-  
   const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
 
   const session = await auth();
   const loggedInUserIsOwner =
-    session?.user.id === profileUser.id ? true : false;
+    session?.user.id === profileUser?.id ? true : false;
 
   return (
-
     <section
       className={cn(
-        "flex flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:h-dvh",
-        profileUser.posts.length === 0 && "h-full justify-center",
+        "flex flex-col items-center gap-10 px-4 py-8 lg:px-0 xl:min-h-dvh",
+        profileUser.posts.length === 0 &&
+          "h-[calc(100dvh-50px)] justify-center",
       )}
     >
-
       <div className="flex h-full max-w-7xl flex-col items-center gap-10 md:w-[95%]">
-
         <div className="flex flex-col items-center gap-5">
           <Avatar>
             <AvatarImage
@@ -70,7 +67,6 @@ const ProfilePage = async ({ params }: Props) => {
         ) : (
           <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
         )}
-
       </div>
     </section>
   );

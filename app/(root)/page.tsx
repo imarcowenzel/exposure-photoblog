@@ -7,15 +7,14 @@ import { PostWithPhotoAndUser } from "@/types";
 import { NoPosts } from "./components/no-posts";
 
 const HomePage = async () => {
-
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
-  const posts: PostWithPhotoAndUser[] = [];
+  const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
     <section
       className={cn(
-        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:px-0",
+        "flex flex-col gap-10 px-4 py-8 md:items-center lg:px-0 xl:min-h-dvh",
         posts.length === 0 && "h-[calc(100dvh-50px)] justify-center lg:py-0",
       )}
     >
