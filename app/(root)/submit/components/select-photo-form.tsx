@@ -16,7 +16,6 @@ const schema = z.object({
 });
 
 export const SelectPhotoForm = () => {
-
   const { photoPreview, setPhotoUrl, setPhotoPreview } = useSubmit();
 
   const form = useForm<z.infer<typeof schema>>({
@@ -42,7 +41,7 @@ export const SelectPhotoForm = () => {
   if (!photoPreview) {
     return (
       <Form {...form}>
-        <form className="w-full">
+        <form className="w-full py-14 md:py-24 lg:w-1/2 lg:py-40 2xl:py-0">
           <FormField
             name="photo"
             render={({ field }) => (

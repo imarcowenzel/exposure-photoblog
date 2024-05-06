@@ -49,7 +49,7 @@ const PostPage = async ({ params }: Props) => {
   return (
     <section className="flex w-full flex-col items-center justify-center 2xl:min-h-dvh">
 
-      <div className="flex w-full max-w-[1500px] flex-col gap-3 md:mt-8 md:gap-6 md:px-24 ">
+      <div className="flex w-full max-w-7xl flex-col gap-3 md:mt-8 md:gap-6 md:px-24 ">
 
         {/* Post Top */}
         <div className="w-dvw md:w-full">

@@ -129,7 +129,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
         <form
           noValidate
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-4"
+          className="flex w-full flex-col gap-4 max-w-7xl lg:w-2/3"
         >
           <FormField
             control={form.control}

@@ -1,26 +1,20 @@
-"use client";
-
-import { useSession } from "next-auth/react";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { EditSubmitPhotoForm } from "@/components/edit-submit-photo-form";
-import { useSubmit } from "@/hooks/use-submit";
-import { SelectPhotoForm } from "./components/select-photo-form";
+import { auth } from "@/lib/auth-options";
+import { Submit } from "./submit";
 
-const SubmitPage = () => {
+export const metadata: Metadata = {
+  title: "Submit | EXPOSURE",
+};
 
-  const { photoPreview } = useSubmit();
-  const { data: session } = useSession();
+const SubmitPage = async () => {
+
+  const session = await auth();
   if (!session) redirect("/log-in");
 
-  return (
-    <section className="flex w-full flex-col gap-10 px-5 py-16 items-center md:justify-center md:px-12 2xl:min-h-dvh 2xl:px-24">
-      <div className="flex max-w-3xl flex-col items-center justify-center gap-6 md:w-full md:gap-12">
-        <SelectPhotoForm />
-        {photoPreview && <EditSubmitPhotoForm user={session.user} />}
-      </div>
-    </section>
-  );
+  return <Submit user={session.user} />;
+
 };
 
 export default SubmitPage;
