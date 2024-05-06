@@ -40,13 +40,16 @@ const ProfilePage = async ({ params }: Props) => {
     session?.user.id === profileUser.id ? true : false;
 
   return (
+
     <section
       className={cn(
-        "flex w-full flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:min-h-dvh",
-        profileUser.posts.length === 0 && "h-full",
+        "flex flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:h-dvh",
+        profileUser.posts.length === 0 && "h-full justify-center",
       )}
     >
+
       <div className="flex h-full max-w-7xl flex-col items-center gap-10 md:w-[95%]">
+
         <div className="flex flex-col items-center gap-5">
           <Avatar>
             <AvatarImage
@@ -67,6 +70,7 @@ const ProfilePage = async ({ params }: Props) => {
         ) : (
           <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
         )}
+
       </div>
     </section>
   );

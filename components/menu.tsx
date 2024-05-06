@@ -33,7 +33,7 @@ export const Menu = () => {
             label="Search"
           />
         </div>
-        <div className="flex w-full flex-col gap-5">
+        <div className="mb-12 flex w-full flex-col gap-5">
           {session ? (
             <>
               <MenuItem

@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import { Button } from "@/components/ui/button";
+
 const Error = ({
   error,
   reset,
@@ -14,10 +16,18 @@ const Error = ({
   }, [error]);
 
   return (
-    <section className="flex w-full flex-col gap-10 px-5 py-16 md:px-16 2xl:h-[calc(100dvh-470px)] 2xl:px-24">
-      <div className="flex h-full flex-col items-center justify-center gap-4">
-      <h1 className="text-4xl font-semibold">500 Error</h1>
-        <h1 className="text-lg font-medium">Something went wrong!</h1>
+    <section className="h-dvh">
+      <div className="flex h-full flex-col items-center justify-center gap-6">
+        <h1 className="text-4xl font-semibold lg:text-6xl">500 Error</h1>
+        <div className="flex flex-col items-center gap-3">
+          <h2 className="text-base md:text-lg lg:text-2xl">
+            Something went wrong!
+          </h2>
+          {/* TODO: set reset() */}
+          <Button onClick={() => reset()} variant={"outline"} className="w-fit">
+            Try again
+          </Button>
+        </div>
       </div>
     </section>
   );

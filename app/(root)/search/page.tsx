@@ -7,6 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { SearchForm } from "./components/form";
 import { NoResults } from "./components/no-results";
+import { PostWithPhotoAndUser } from "../../../types/index";
+import { User } from "@prisma/client";
 
 type MetadataProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -15,7 +17,6 @@ type MetadataProps = {
 export async function generateMetadata({
   searchParams,
 }: MetadataProps): Promise<Metadata> {
-
   const q = searchParams.q;
 
   let title = "Search | EXPOSURE";
@@ -34,7 +35,6 @@ const SearchPage = async ({
 }: {
   searchParams: { q: string };
 }) => {
-
   let results = null;
 
   // TODO: search alway at lowercase
@@ -51,21 +51,18 @@ const SearchPage = async ({
   }
 
   return (
-
     <section
       className={cn(
-        "flex w-full flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:min-h-dvh 2xl:h-full",
-        results && results.lenght === 0 && "h-full",
+        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:px-0",
+        results && results.length === 0 && "lg:h-full lg:justify-center",
+        !results && "justify-center py-24 md:py-36 lg:py-0",
       )}
     >
-
       <div
         className={cn(
-          "flex max-w-7xl flex-col items-center gap-12 md:w-[95%] 2xl:h-full ",
-          !results && "h-full justify-center py-14 md:py-24 lg:py-48 2xl:py-0",
+          "flex max-w-7xl flex-col items-center gap-12 md:w-[95%] lg:h-full",
         )}
       >
-
         <div className="flex w-fit flex-col">
           <SearchForm />
           <Separator className="h-[2px]" />
@@ -76,7 +73,6 @@ const SearchPage = async ({
         ) : (
           <NoResults />
         )}
-
       </div>
     </section>
   );
