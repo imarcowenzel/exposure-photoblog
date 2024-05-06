@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const searchSchema = z.object({
-  query: z.string().min(1, { message: "Search must be at least 1 character." }),
+  q: z.string().min(1, { message: "Search must be at least 1 character." }),
 });
 
 export const SearchForm = () => {
@@ -23,14 +23,14 @@ export const SearchForm = () => {
   const form = useForm<z.infer<typeof searchSchema>>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
-      query: "",
+      q: "",
     },
   });
 
   async function onSubmit(data: z.infer<typeof searchSchema>) {
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
-    searchParams.set("query", data.query);
+    searchParams.set("q", data.q);
     url.search = searchParams.toString();
     window.location.href = url.toString();
   }
@@ -39,7 +39,7 @@ export const SearchForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:max-w-[560px]">
         <FormField
-          name="query"
+          name="q"
           render={({ field }) => (
             <FormItem className="relative">
               <FormControl>

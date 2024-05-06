@@ -95,6 +95,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
 
           if (res.status === 201) {
             toast.success(res.data.message);
+            setPhotoPreview("")
             router.replace(`/profile/${user.username}`);
           }
 

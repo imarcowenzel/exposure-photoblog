@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 
 export const NoPosts = () => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-5 py-10 text-center">
-      <HeartCrackIcon className="h-12 w-12 text-red-600 lg:h-16 lg:w-16" />
+    
+    <div className="flex h-full flex-col items-center justify-center gap-5 py-14 text-center md:py-24 lg:py-48 2xl:py-0">
+
+      <HeartCrackIcon className="h-12 w-12 text-[#FF0000] lg:h-16 lg:w-16" />
 
       <div className="flex flex-col">
         <h1 className="text-lg md:text-xl lg:text-3xl">
@@ -17,12 +19,13 @@ export const NoPosts = () => {
           href="/submit"
           className={cn(
             buttonVariants({ variant: "link" }),
-            "text-black text-base md:text-lg lg:text-2xl font-semibold",
+            "text-base font-semibold text-black md:text-lg lg:text-2xl",
           )}
         >
           Be the first to post.
         </Link>
       </div>
+
     </div>
   );
 };

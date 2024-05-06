@@ -70,20 +70,22 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const query = searchParams.get("query") || undefined;
 
-    if (query) {
+  try {
+
+    const { searchParams } = new URL(req.url);
+    const q = searchParams.get("q") || undefined;
+
+    if (q) {
       const posts = await db.post.findMany({
         where: {
           OR: [
             {
               user: {
-                username: query,
+                username: q,
               },
             },
-            { tags: { has: query } },
+            { tags: { has: q } },
           ],
         },
         include: { photo: true, user: true },

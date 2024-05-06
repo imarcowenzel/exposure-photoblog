@@ -30,7 +30,7 @@ type Props = {
 };
 
 const ProfilePage = async ({ params }: Props) => {
-
+  
   const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
@@ -40,33 +40,34 @@ const ProfilePage = async ({ params }: Props) => {
     session?.user.id === profileUser.id ? true : false;
 
   return (
-
     <section
       className={cn(
-        "flex w-full flex-col items-center gap-10 px-5 py-16 md:px-6 2xl:min-h-dvh",
+        "flex w-full flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:min-h-dvh",
         profileUser.posts.length === 0 && "h-full",
       )}
     >
+      <div className="flex h-full max-w-7xl flex-col items-center gap-10 md:w-[95%]">
+        <div className="flex flex-col items-center gap-5">
+          <Avatar>
+            <AvatarImage
+              src={profileUser.image! || "/assets/profile-picture.svg"}
+            />
+            <AvatarFallback>USER</AvatarFallback>
+          </Avatar>
+          <h2 className="text-lg font-medium">{profileUser.username}</h2>
+        </div>
 
-      <div className="flex flex-col items-center gap-5">
-        <Avatar>
-          <AvatarImage
-            src={profileUser.image! || "/assets/profile-picture.svg"}
-          />
-          <AvatarFallback>USER</AvatarFallback>
-        </Avatar>
-        <h2 className="text-lg font-medium">{profileUser.username}</h2>
+        {profileUser.posts.length !== 0 ? (
+          <>
+            <h3 className="w-fit bg-black px-3 py-2 font-medium text-white">
+              Gallery
+            </h3>
+            <PostsFeed posts={profileUser.posts} />
+          </>
+        ) : (
+          <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
+        )}
       </div>
-
-      {profileUser.posts.length !== 0 ? (
-        <>
-        <h3 className="bg-black text-white py-2 px-3 font-medium">Gallery</h3>
-        <PostsFeed posts={profileUser.posts} />
-        </>
-      ) : (
-        <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
-      )}
-      
     </section>
   );
 };

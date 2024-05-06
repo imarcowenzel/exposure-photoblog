@@ -4,15 +4,22 @@ import { ChevronRight } from "lucide-react";
 import { PostsFeed } from "@/components/posts-feed";
 import { PostWithPhotoAndUser } from "@/types";
 import { NoPosts } from "./components/no-posts";
+import { cn } from "@/lib/utils";
 
 const HomePage = async () => {
+  
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
   const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
-    <section className="flex w-full h-full flex-col items-center gap-10 px-4 py-8 lg:px-0">
-      <div className="max-w-7xl h-full md:w-[95%]">
+    <section
+      className={cn(
+        "flex w-full flex-col items-center gap-10 px-4 py-8 lg:px-0 2xl:min-h-dvh",
+        posts.length === 0 && "h-full justify-center",
+      )}
+    >
+      <div className={cn("h-full max-w-7xl md:w-[95%]")}>
         {posts.length !== 0 ? (
           <div className="flex flex-col gap-8 lg:gap-20">
             <div className="flex gap-2">
