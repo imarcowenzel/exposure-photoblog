@@ -2,10 +2,10 @@ import axios from "axios";
 import { Metadata } from "next";
 
 import { PostsFeed } from "@/components/feed";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth } from "@/lib/auth-options";
 import { cn } from "@/lib/utils";
 import { UserWithPosts } from "@/types";
+import { Header } from "./components/header";
 import { NoPostsYets } from "./components/no-posts-yet";
 
 type MetadataProps = {
@@ -39,23 +39,17 @@ const ProfilePage = async ({ params }: Props) => {
     session?.user.id === profileUser?.id ? true : false;
 
   return (
+
     <section
       className={cn(
-        "flex flex-col items-center gap-10 px-4 py-8 lg:px-0 xl:min-h-dvh",
+        "flex flex-col items-center gap-10 px-4 py-8 lg:min-h-dvh",
         profileUser.posts.length === 0 &&
           "h-[calc(100dvh-50px)] justify-center",
       )}
     >
       <div className="flex h-full max-w-7xl flex-col items-center gap-10 md:w-[95%]">
-        <div className="flex flex-col items-center gap-5">
-          <Avatar>
-            <AvatarImage
-              src={profileUser.image! || "/assets/profile-picture.svg"}
-            />
-            <AvatarFallback>USER</AvatarFallback>
-          </Avatar>
-          <h2 className="text-lg font-medium">{profileUser.username}</h2>
-        </div>
+
+        <Header user={profileUser} />
 
         {profileUser.posts.length !== 0 ? (
           <>
@@ -67,6 +61,7 @@ const ProfilePage = async ({ params }: Props) => {
         ) : (
           <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
         )}
+
       </div>
     </section>
   );

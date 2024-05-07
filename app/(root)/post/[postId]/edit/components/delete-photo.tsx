@@ -30,7 +30,7 @@ export const DeletePhoto = () => {
       const res = await axios.delete(url);
       if (res.status === 200) {
         toast.success(res.data.message);
-        window.location.href = `/profile/${session?.user.username}`
+        window.location.href = `/${session?.user.username}`
       }
     } catch (error: any) {
       console.log("Error:", error);

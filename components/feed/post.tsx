@@ -12,6 +12,7 @@ type Props = {
 
 export const Post = ({ post }: Props) => {
   const pathname = usePathname();
+  // TODO: condition if goes to profile page
   const showCaption = !pathname.includes("/profile");
 
   return (
@@ -31,7 +32,7 @@ export const Post = ({ post }: Props) => {
       {showCaption && (
         <figcaption className="flex items-center justify-between px-2">
           <Link
-            href={`/profile/${post.user.username}`}
+            href={`/${post.user.username}`}
             className="flex items-center gap-4"
           >
             <p className="text-xs text-secondary">{`/ ${post.user.username}`}</p>

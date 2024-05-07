@@ -14,14 +14,13 @@ export const metadata: Metadata = {
 };
 
 const AccountPage = async () => {
-
   const session = await auth();
   if (!session) {
     redirect("/log-in");
   }
 
   return (
-    <section className="2xl:h-dhv flex w-full flex-col items-center gap-10 px-5 py-16 md:px-16 2xl:px-24">
+    <section className="2xl:h-dhv flex w-full flex-col items-center gap-10 px-5 py-8">
       <div className="flex w-full max-w-96 flex-col items-center justify-center gap-12">
         <Header />
         <div className="flex w-full flex-col items-center justify-center gap-7">

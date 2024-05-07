@@ -16,7 +16,6 @@ const schema = z.object({
 });
 
 export const SelectPhotoForm = () => {
-  
   const { photoPreview, setPhotoUrl, setPhotoPreview } = useSubmit();
 
   const form = useForm<z.infer<typeof schema>>({
@@ -42,13 +41,13 @@ export const SelectPhotoForm = () => {
   if (!photoPreview) {
     return (
       <Form {...form}>
-        <form className="w-full py-14 md:py-24 lg:w-1/2 lg:py-40 2xl:py-0">
+        <form className="flex h-2/3 w-full justify-center lg:w-2/3">
           <FormField
             name="photo"
             render={({ field }) => (
               <Label className="submit-label">
                 <CameraIcon size={50} />
-                <h3 className="text-base whitespace-nowrap font-semibold md:text-lg lg:text-2xl">
+                <h3 className="whitespace-nowrap text-base font-semibold md:text-lg lg:text-2xl">
                   Select a photo
                 </h3>
                 <Input

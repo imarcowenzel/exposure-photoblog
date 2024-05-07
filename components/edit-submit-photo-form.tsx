@@ -96,7 +96,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
           if (res.status === 201) {
             toast.success(res.data.message);
             setPhotoPreview("")
-            window.location.href = `/profile/${user.username}`
+            window.location.href = `/${user.username}`
           }
 
         }
@@ -142,8 +142,9 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
                     type="text"
                     name="tags"
                     aria-label="Tags"
-                    placeholder="Add a tag (separate each tag with a comma)"
+                    placeholder="Add tags (separate each tag with a comma)"
                     onChange={({ target: { value } }) => onChange(value, field)}
+                    className="placeholder:text-xs md:placeholder:text-sm"
                   />
                 </FormControl>
                 <FormMessage />

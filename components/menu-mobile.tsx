@@ -20,7 +20,7 @@ export const MenuMobile = () => {
 
         <MenuItemMobile href="/" Icon={Globe} label="Explore" />
         <MenuItemMobile
-          href={`/profile/${username}`}
+          href={`/${username}`}
           Icon={Smile}
           label="Profile"
         />

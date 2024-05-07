@@ -16,11 +16,12 @@ const HomePage = async () => {
     
     <section
       className={cn(
-        "flex flex-col gap-10 px-4 py-8 md:items-center lg:px-0 xl:min-h-dvh",
-        posts.length === 0 && "h-[calc(100dvh-50px)] justify-center lg:py-0",
+        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh",
+        posts.length === 0 && "h-[calc(100dvh-50px)] justify-center",
       )}
     >
       <div className="max-w-7xl lg:w-[95%]">
+
         {posts.length !== 0 ? (
           <div className="flex flex-col gap-8 lg:gap-20">
             <div className="flex items-center gap-2">
@@ -35,6 +36,7 @@ const HomePage = async () => {
           <NoPosts />
         )}
       </div>
+      
     </section>
   );
 };

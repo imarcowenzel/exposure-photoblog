@@ -1,3 +1,3 @@
 export { default } from "next-auth/middleware";
 
-export const config = { matcher: ["/account", "/submit", "/profile/undefined"] };
+export const config = { matcher: ["/account", "/submit", "/undefined"] };

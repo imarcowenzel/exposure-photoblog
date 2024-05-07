@@ -68,7 +68,7 @@ const PostPage = async ({ params }: Props) => {
 
           <div className="flex w-full flex-col gap-2">
 
-            <Link href={`/profile/${post.user.username}`}>
+            <Link href={`/${post.user.username}`}>
               <p className="text-sm font-semibold">{post.user?.username}</p>
             </Link>
 
