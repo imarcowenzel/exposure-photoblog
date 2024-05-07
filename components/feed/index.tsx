@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { PostWithPhotoAndUser } from "@/types";
-import { OneColumnPosts } from "./one-column-posts";
+import { Post } from "./post";
 import { Posts } from "./posts";
 
 type Props = {
@@ -30,8 +30,11 @@ export const PostsFeed = ({ posts }: Props) => {
     <div
       className={`grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 ${screenWidth >= 430 && screenWidth < 767 && "grid-cols-2"}`}
     >
-      {screenWidth < 429 && <OneColumnPosts posts={posts} />}
-      {screenWidth > 430 && <Posts posts={posts} screenWidth={screenWidth} />}
+      {screenWidth < 429 ? (
+        posts.map((post) => <Post key={post.id} post={post} />)
+      ) : (
+        <Posts posts={posts} screenWidth={screenWidth} />
+      )}
     </div>
   );
 };

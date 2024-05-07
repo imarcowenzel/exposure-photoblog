@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { PostWithPhotoAndUser } from "@/types";
+import { Post } from "./post";
 
 interface Props {
   posts: PostWithPhotoAndUser[];
@@ -23,7 +22,9 @@ export const Posts = ({ posts, screenWidth }: Props) => {
     }
   };
 
-  const [columnsCount, setColumnsCount] = useState(determineColumnsCount(screenWidth));
+  const [columnsCount, setColumnsCount] = useState(
+    determineColumnsCount(screenWidth),
+  );
 
   useEffect(() => {
     const resizeListener = () => {
@@ -36,7 +37,10 @@ export const Posts = ({ posts, screenWidth }: Props) => {
   }, []);
 
   const groupPostsByColumn = () => {
-    const columns: PostWithPhotoAndUser[][] = Array.from({ length: columnsCount }, () => []);
+    const columns: PostWithPhotoAndUser[][] = Array.from(
+      { length: columnsCount },
+      () => [],
+    );
     // Iterate through posts and distribute them into columns
     posts.forEach((post, index) => {
       // Calculate the index of the column for the current post
@@ -57,18 +61,7 @@ export const Posts = ({ posts, screenWidth }: Props) => {
           className={`flex flex-col col-start-${columnIndex + 1} gap-5`}
         >
           {column.map((post) => (
-            <figure key={post.id} className="flex flex-col gap-2">
-              <Link href={`/post/${post.id}`}>
-                <Image
-                  src={post.photo.url}
-                  priority
-                  alt={`${post.user.username}\`s post`}
-                  height={400}
-                  width={400}
-                />
-              </Link>
-              {/* Your caption logic here */}
-            </figure>
+            <Post key={post.id} post={post} />
           ))}
         </div>
       ))}
