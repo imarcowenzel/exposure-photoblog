@@ -49,7 +49,7 @@ const SearchPage = async ({
   return (
     <section
       className={cn(
-        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:h-full lg:px-0",
+        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:px-0",
         results &&
           results.length === 0 &&
           "h-[calc(100dvh-50px)] justify-center",
