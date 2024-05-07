@@ -3,12 +3,9 @@ import { Metadata } from "next";
 import qs from "query-string";
 
 import { PostsFeed } from "@/components/posts-feed";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { SearchForm } from "./components/form";
 import { NoResults } from "./components/no-results";
-import { PostWithPhotoAndUser } from "../../../types/index";
-import { User } from "@prisma/client";
 
 type MetadataProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -54,24 +51,30 @@ const SearchPage = async ({
     <section
       className={cn(
         "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:px-0",
-        results && results.length === 0 && "lg:h-full lg:justify-center",
-        !results && "justify-center py-24 md:py-36 lg:py-0",
+        results &&
+          results.length === 0 &&
+          "h-[calc(100dvh-50px)] justify-center",
+        !results && "h-[calc(100dvh-50px)] justify-between",
       )}
     >
       <div
         className={cn(
-          "flex max-w-7xl flex-col items-center gap-12 md:w-[95%] lg:h-full",
+          "flex h-full max-w-7xl flex-col items-center gap-12 md:w-[95%]",
+          results && results.length === 0 && "justify-between",
+          !results && "justify-center"
         )}
       >
         <div className="flex w-fit flex-col">
           <SearchForm />
-          <Separator className="h-[2px]" />
         </div>
 
         {!results ? null : results.length !== 0 ? (
           <PostsFeed posts={results} />
         ) : (
-          <NoResults />
+          <>
+            <NoResults />
+            <div />
+          </>
         )}
       </div>
     </section>

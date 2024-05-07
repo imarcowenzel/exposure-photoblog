@@ -8,18 +8,19 @@ import * as z from "zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 const searchSchema = z.object({
   q: z.string().min(1, { message: "Search must be at least 1 character." }),
 });
 
 export const SearchForm = () => {
-
   const form = useForm<z.infer<typeof searchSchema>>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
@@ -37,7 +38,10 @@ export const SearchForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:max-w-[560px]">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full md:max-w-[560px]"
+      >
         <FormField
           name="q"
           render={({ field }) => (
@@ -45,17 +49,18 @@ export const SearchForm = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="Search for tag or profile"
-                  className="outline-none bg-transparent border-none placeholder:text-lg md:placeholder:text-2xl text-lg md:text-2xl px-0"
+                  placeholder="Search for tags or profile"
+                  className="border-none bg-transparent px-0 text-lg outline-none placeholder:text-lg md:text-2xl md:placeholder:text-2xl"
                 />
               </FormControl>
+              <Separator className="h-[2px]" />
               {field.value && (
-                <span className="absolute top-1 right-2">
+                <span className="absolute right-2 top-1">
                   <X
                     height={21}
                     width={21}
                     onClick={() => field.onChange("")}
-                    className="text-[#888888] cursor-pointer"
+                    className="cursor-pointer text-[#888888]"
                   />
                 </span>
               )}
