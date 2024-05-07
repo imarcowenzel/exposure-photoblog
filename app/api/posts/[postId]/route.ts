@@ -131,6 +131,7 @@ export async function DELETE(
     await db.post.delete({ where: { id: post.id } });
 
     revalidatePath(`/profile/${session?.user.username}`);
+    revalidatePath("/");
 
     return NextResponse.json(
       { revalidate: true, message: "Post deleted successfully!" },

@@ -11,7 +11,7 @@ export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
   return (
     <div className="flex items-center text-center md:h-full md:justify-center">
       {loggedInUserIsOwner ? (
-        <h3 className="text-lg md:text-xl lg:text-3xl">
+        <h1 className="text-lg md:text-xl lg:text-3xl">
           You haven&apos;t shared any posts yet!
           <br />
           <Link
@@ -23,11 +23,11 @@ export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
           >
             Let&apos;s create your debut post
           </Link>
-        </h3>
+        </h1>
       ) : (
-        <h3 className="text-lg md:text-xl lg:text-3xl">
-          This user hasn&apos;t shared any posts yet
-        </h3>
+        <h1 className="text-lg md:text-xl lg:text-3xl">
+          This user hasn&apos;t shared any posts yet!
+        </h1>
       )}
     </div>
   );

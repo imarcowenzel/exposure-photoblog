@@ -3,7 +3,6 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import NotFound from "@/app/not-found";
 import { buttonVariants } from "@/components/ui/button";
 import { auth } from "@/lib/auth-options";
 import { cn, formatter } from "@/lib/utils";
@@ -55,14 +54,15 @@ const PostPage = async ({ params }: Props) => {
         {/* Post Top */}
         <div className="w-dvw md:w-full">
           <Image
+            priority
             src={post.photo?.url}
-            alt="Posto photo"
+            alt="Post photo"
             width={1368}
             height={1368}
-            priority
             className="w-full object-cover md:object-contain max-h-dvh"
           />
         </div>
+        
         {/* Post Bottom */}
         <div className="flex w-full items-end justify-between gap-2 p-5 md:p-0 md:pb-5">
 

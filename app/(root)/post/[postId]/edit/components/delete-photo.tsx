@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,24 +18,25 @@ import {
 } from "@/components/ui/dialog";
 
 export const DeletePhoto = () => {
-
   const { postId } = useParams();
   const router = useRouter();
   const { data: session } = useSession();
-
-  // TODO: Is Loading, melhorar a function
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function onSubmit() {
+    setIsLoading(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${postId}`;
       const res = await axios.delete(url);
       if (res.status === 200) {
         toast.success(res.data.message);
-        router.push(`/profile/${session?.user.username}`)
+        window.location.href = `/profile/${session?.user.username}`
       }
     } catch (error: any) {
       console.log("Error:", error);
       toast.error(error.response.data);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -57,13 +59,17 @@ export const DeletePhoto = () => {
               <Button
                 onClick={onSubmit}
                 variant={"destructive"}
-                className="flex-1"
+                disabled={isLoading}
+                className="w-full"
               >
-                Yes
+                {!isLoading ? "Yes" : "Deleting..."}
               </Button>
-              {/* //TODO: Is Loading */}
               <DialogClose asChild>
-                <Button variant={"outline"} className="flex-1">
+                <Button
+                  variant={"outline"}
+                  disabled={isLoading}
+                  className="w-full"
+                >
                   No
                 </Button>
               </DialogClose>

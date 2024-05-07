@@ -23,7 +23,6 @@ const Error = ({
           <h2 className="text-base md:text-lg lg:text-2xl">
             Something went wrong!
           </h2>
-          {/* TODO: set reset() */}
           <Button onClick={() => reset()} variant={"outline"} className="w-fit">
             Try again
           </Button>

@@ -7,8 +7,10 @@ import { cn } from "@/lib/utils";
 export const NoPosts = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-5">
+
       <HeartCrack />
       <div className="flex flex-col text-center">
+
         <h1 className="text-lg md:text-xl lg:text-3xl">
           Looks like there&apos;s no posts!
         </h1>
@@ -21,6 +23,7 @@ export const NoPosts = () => {
         >
           Be the first to post
         </Link>
+        
       </div>
     </div>
   );

@@ -58,9 +58,12 @@ export async function PUT(
     });
 
     if (!user) {
-      return NextResponse.json({message: "No user found."}, {
-        status: 404,
-      });
+      return NextResponse.json(
+        { message: "No user found." },
+        {
+          status: 404,
+        },
+      );
     }
 
     const session = await auth();
@@ -197,16 +200,17 @@ export async function PUT(
     );
   }
 }
-
 export async function DELETE(
   req: Request,
   { params }: { params: { username: string } },
 ) {
   try {
+
     const session = await auth();
 
     const user = await db.user.findUnique({
       where: { username: params.username },
+      include: { posts: { include: { photo: true } } },
     });
 
     if (!user) {
@@ -214,13 +218,39 @@ export async function DELETE(
     }
 
     if (session?.user.id !== user?.id) {
-      return NextResponse.json({ message: "Error." }, { status: 404 });
+      return NextResponse.json({ message: "Unauthorized." }, { status: 401 });
+    }
+
+    const keys: string[] = [];
+
+    if (user.posts.length !== 0) {
+      keys.push(
+        ...user.posts
+          .filter(({ photo }) => photo?.key)
+          .map(({ photo }) => photo!.key)
+      );
+    }
+
+    if (user.imageKey) {
+      keys.push(user.imageKey);
+    }
+
+    if (keys.length > 0) {
+      const utapi = new UTApi();
+      const res = await utapi.deleteFiles(keys);
+
+      if (!res.success) {
+        return NextResponse.json(
+          { message: "Failed to delete files from uploadthing." },
+          { status: 400 },
+        );
+      }
     }
 
     await db.user.delete({ where: { username: params.username } });
 
     return NextResponse.json(
-      { message: "User deleted successfully!" },
+      { message: "User and associated data deleted successfully!" },
       { status: 200 },
     );
   } catch (error: any) {

@@ -96,7 +96,7 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
           if (res.status === 201) {
             toast.success(res.data.message);
             setPhotoPreview("")
-            router.replace(`/profile/${user.username}`);
+            window.location.href = `/profile/${user.username}`
           }
 
         }
@@ -117,9 +117,9 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
       {post && <CloseButton />}
 
       <Image
+        priority
         src={post?.photo?.url || photoPreview}
         alt="Photo Preview"
-        priority
         width={1368}
         height={1368}
         className="max-h-dvh w-dvw md:w-auto" 

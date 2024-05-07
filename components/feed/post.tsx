@@ -15,16 +15,19 @@ export const Post = ({ post }: Props) => {
   const showCaption = !pathname.includes("/profile");
 
   return (
+
     <figure key={post.id} className="flex flex-col gap-2">
+
       <Link href={`/post/${post.id}`}>
         <Image
-          src={post.photo.url}
           priority
+          src={post.photo.url}
           alt={`${post.user.username}\`s post`}
-          height={400}
-          width={400}
+          height={1368}
+          width={1368}
         />
       </Link>
+
       {showCaption && (
         <figcaption className="flex items-center justify-between px-2">
           <Link

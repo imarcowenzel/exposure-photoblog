@@ -31,7 +31,7 @@ const formSchema = z.object({
   tags: z.string().min(2),
 });
 
-const EditForm = ({ user, post }: Props) => {
+const EditForm = ({ post }: Props) => {
   const [tags, setTags] = useState<string[]>([]);
   const router = useRouter();
 
@@ -49,13 +49,11 @@ const EditForm = ({ user, post }: Props) => {
     try {
       const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`;
       const res = await axios.put(url, { tags });
-
       if (res.status !== 200) {
         console.log(res.data);
       }
-
       toast.success(res.data.message);
-      router.replace(`/post/${post.id}`);
+      window.location.href = `/post/${post.id}`
     } catch (error: any) {
       console.error(error);
       if (error instanceof AxiosError) {
@@ -66,17 +64,21 @@ const EditForm = ({ user, post }: Props) => {
   }
 
   return (
-    <section className="md:min-h-[calc(100dvh-1228px]) flex min-h-[calc(100dvh-1404px)] w-full flex-col items-center justify-center gap-y-10 py-6 lg:min-h-[calc(100dvh-358px)]">
+
+    <section className="flex w-full flex-col items-center justify-center gap-y-10 py-6">
+
       <div className="flex h-full w-full flex-col items-start gap-y-6 px-5 md:gap-y-12">
+
         <div className="flex w-full flex-col items-center gap-y-4 pt-2.5">
-          <div className="flex w-full justify-center">
+
+          <div className="w-dvw md:w-full">
             <Image
-              src={post.photo.url} //TODO: check null of url
-              alt={JSON.stringify(post.tags)}
-              width={500}
-              height={500}
               priority
-              className="object-cover lg:w-1/3 lg:px-0"
+              src={post.photo.url}
+              alt={JSON.stringify(post.tags)}
+              width={1368}
+              height={1368}
+              className="max-h-dvh w-full object-cover md:object-contain"
             />
           </div>
 
@@ -124,8 +126,11 @@ const EditForm = ({ user, post }: Props) => {
 
           <DeletePhoto />
         </div>
+
       </div>
+
     </section>
+
   );
 };
 

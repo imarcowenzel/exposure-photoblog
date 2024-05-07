@@ -50,7 +50,7 @@ export const SearchForm = () => {
                 <Input
                   {...field}
                   placeholder="Search for tags or profile"
-                  className="border-none bg-transparent px-0 text-lg outline-none placeholder:text-lg md:text-2xl md:placeholder:text-2xl"
+                  className="border-none bg-transparent px-0 text-lg outline-none placeholder:text-lg md:text-xl md:placeholder:text-xl lg:text-3xl lg:placeholder:text-3xl"
                 />
               </FormControl>
               <Separator className="h-[2px]" />

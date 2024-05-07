@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import { Footer } from "@/components/footer";
 import { MobileHeader } from "@/components/mobile-header";
@@ -8,8 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/context/auth-provider";
 import "./styles/globals.css";
 
-// TODO: change font
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
@@ -26,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={inter.className}>
         <AuthProvider>
           <Sidebar />
           <MobileHeader />
