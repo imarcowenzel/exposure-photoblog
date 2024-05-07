@@ -9,7 +9,7 @@ type Props = {
 
 export const NoPostsYets = ({ loggedInUserIsOwner }: Props) => {
   return (
-    <div className="flex items-center text-center md:h-full md:justify-center">
+    <div className="flex h-full items-center justify-center text-center">
       {loggedInUserIsOwner ? (
         <h1 className="text-lg md:text-xl lg:text-3xl">
           You haven&apos;t shared any posts yet!
