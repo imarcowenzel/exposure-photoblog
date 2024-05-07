@@ -89,6 +89,7 @@ export async function GET(req: Request) {
           ],
         },
         include: { photo: true, user: true },
+        orderBy: { createdAt: "desc" },
       });
 
       return NextResponse.json(posts, { status: 200 });

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Metadata } from "next";
 
-import { PostsFeed } from "@/components/posts-feed";
+import { PostsFeed } from "@/components/feed";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth } from "@/lib/auth-options";
 import { cn } from "@/lib/utils";

@@ -31,7 +31,7 @@ export const SearchForm = () => {
   async function onSubmit(data: z.infer<typeof searchSchema>) {
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
-    searchParams.set("q", data.q);
+    searchParams.set("q", data.q.toLowerCase());
     url.search = searchParams.toString();
     window.location.href = url.toString();
   }

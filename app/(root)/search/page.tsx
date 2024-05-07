@@ -2,7 +2,7 @@ import axios from "axios";
 import { Metadata } from "next";
 import qs from "query-string";
 
-import { PostsFeed } from "@/components/posts-feed";
+import { PostsFeed } from "@/components/feed";
 import { cn } from "@/lib/utils";
 import { SearchForm } from "./components/form";
 import { NoResults } from "./components/no-results";
@@ -34,7 +34,6 @@ const SearchPage = async ({
 }) => {
   let results = null;
 
-  // TODO: search alway at lowercase
   const url = qs.stringifyUrl({
     url: `${process.env.NEXTAUTH_URL}/api/posts/`,
     query: {
@@ -50,7 +49,7 @@ const SearchPage = async ({
   return (
     <section
       className={cn(
-        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:px-0",
+        "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh lg:h-full lg:px-0",
         results &&
           results.length === 0 &&
           "h-[calc(100dvh-50px)] justify-center",
@@ -59,11 +58,12 @@ const SearchPage = async ({
     >
       <div
         className={cn(
-          "flex h-full max-w-7xl flex-col items-center gap-12 md:w-[95%]",
+          "flex h-full max-w-7xl flex-col items-center justify-center gap-12 md:w-[95%]",
           results && results.length === 0 && "justify-between",
-          !results && "justify-center"
+          !results && "justify-center",
         )}
       >
+
         <div className="flex w-fit flex-col">
           <SearchForm />
         </div>

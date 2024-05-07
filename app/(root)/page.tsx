@@ -1,17 +1,19 @@
 import axios from "axios";
 import { ChevronRight } from "lucide-react";
 
-import { PostsFeed } from "@/components/posts-feed";
 import { cn } from "@/lib/utils";
 import { PostWithPhotoAndUser } from "@/types";
 import { NoPosts } from "./components/no-posts";
+import { PostsFeed } from "@/components/feed";
 
 const HomePage = async () => {
+
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
   const res = await axios.get(url);
   const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
+    
     <section
       className={cn(
         "flex flex-col gap-10 px-4 py-8 md:items-center lg:px-0 xl:min-h-dvh",
