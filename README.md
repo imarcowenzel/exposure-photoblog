@@ -5,7 +5,7 @@ EXPOSURE is a full-stack web application developed with Next.js, Next-Auth, Mong
 ## Technologies Used
 
 - [Next.js](https://nextjs.org/): React framework for server-side and client-side rendering (Server Side Render and Client Side Render).
-- [Auth.js](https://next-auth.js.org/): flexible and user-friendly authentication for Next.js.
+- [NextAuth.js](https://next-auth.js.org/): flexible and user-friendly authentication for Next.js.
 - [MongoDB](https://www.mongodb.com/): NoSQL database for storing user data, posts, and more.
 - [uploadthing](https://uploadthing.com/): file upload tool for TypeScript and Next.js applications.
 - [Tailwind CSS](https://tailwindcss.com/): utility-first CSS framework for custom styling.
@@ -13,7 +13,7 @@ EXPOSURE is a full-stack web application developed with Next.js, Next-Auth, Mong
 ## Key Features
 
 - 🛠️ Complete blog built from scratch in Next.js 14
-- 🔑 Authentication using Next-Auth
+- 🔑 Authentication using Next-Auth.js
 - 📷 Share photos with creativies hashtags.
 - 🔍 Search photos by hashtag or username.
 - 👤 Visiting other users' profiles.
