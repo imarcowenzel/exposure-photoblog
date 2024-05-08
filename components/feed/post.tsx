@@ -11,9 +11,9 @@ type Props = {
 };
 
 export const Post = ({ post }: Props) => {
+
   const pathname = usePathname();
-  // TODO: condition if goes to profile page
-  const showCaption = !pathname.includes("/profile");
+  const showCaption = !pathname.includes(post.user.username);
 
   return (
 

@@ -95,8 +95,8 @@ export const EditSubmitPhotoForm = ({ user, post }: Props) => {
 
           if (res.status === 201) {
             toast.success(res.data.message);
-            setPhotoPreview("")
             window.location.href = `/${user.username}`
+            setPhotoPreview("")
           }
 
         }
