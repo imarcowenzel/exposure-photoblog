@@ -6,6 +6,8 @@ import { PostWithPhotoAndUser } from "@/types";
 import { NoPosts } from "./components/no-posts";
 import { PostsFeed } from "@/components/feed";
 
+export const revalidate = 0;
+
 const HomePage = async () => {
 
   const url = `${process.env.NEXTAUTH_URL}/api/posts`;
