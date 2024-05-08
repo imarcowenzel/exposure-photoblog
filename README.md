@@ -13,7 +13,7 @@ EXPOSURE is a full-stack web application developed with Next.js, Next-Auth, Mong
 ## Key Features
 
 - 🛠️ Complete blog built from scratch in Next.js 14
-- 🔑 Authentication using Clerk
+- 🔑 Authentication using Next-Auth
 - 📷 Share photos with creativies hashtags.
 - 🔍 Search photos by hashtag or username.
 - 👤 Visiting other users' profiles.
