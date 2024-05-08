@@ -11,6 +11,7 @@ type Props = {
 };
 
 export const PostsFeed = ({ posts }: Props) => {
+  
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {

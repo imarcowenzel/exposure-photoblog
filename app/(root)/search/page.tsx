@@ -63,7 +63,6 @@ const SearchPage = async ({
           !results && "justify-center",
         )}
       >
-
         <div className="flex w-fit flex-col">
           <SearchForm />
         </div>

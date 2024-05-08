@@ -30,6 +30,7 @@ type Props = {
 };
 
 const ProfilePage = async ({ params }: Props) => {
+  
   const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
