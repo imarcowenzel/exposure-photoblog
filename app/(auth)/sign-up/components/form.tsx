@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 
-import { OAuthButtons } from "@/components/oauth-button";
+import { OAuthButton } from "@/components/oauth-button";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -91,7 +91,7 @@ export const SignUpForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-4"
       >
-        <OAuthButtons />
+        <OAuthButton />
         <FormField
           control={form.control}
           name="email"

@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 
-import { OAuthButtons } from "@/components/oauth-button";
+import { OAuthButton } from "@/components/oauth-button";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -74,7 +74,7 @@ export const LogInForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-6"
       >
-        <OAuthButtons />
+        <OAuthButton />
 
         <Separator />
 

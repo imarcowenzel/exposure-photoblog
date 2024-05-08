@@ -8,7 +8,6 @@ import type {
 import type { NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
 import db from "@/lib/db";
@@ -20,10 +19,6 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.NEXTAUTH_GOOGLE_ID!,
       clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET!,
-    }),
-    GithubProvider({
-      clientId: process.env.NEXTAUTH_GITHUB_ID!,
-      clientSecret: process.env.NEXTAUTH_GITHUB_SECRET!,
     }),
     CredentialsProvider({
       id: "credentials",
