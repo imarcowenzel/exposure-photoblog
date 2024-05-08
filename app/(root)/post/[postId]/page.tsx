@@ -74,9 +74,9 @@ const PostPage = async ({ params }: Props) => {
 
             <div className="flex gap-x-2 text-[#888888]">
               {post.tags.map((tag, i) => (
-                <p className="text-sm" key={i}>
+                <Link href={`/search?q=${tag}`} className="text-sm" key={i}>
                   #{tag}
-                </p>
+                </Link>
               ))}
             </div>
             <p className="text-xs text-[#888888]">{formattedDate}</p>
