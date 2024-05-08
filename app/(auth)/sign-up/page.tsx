@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const SignUpPage = () => {
   return (
-    <section className="flex w-full flex-col items-center justify-center gap-10 py-12">
-      <div className="flex w-full flex-col items-start justify-center gap-10 px-6 md:max-w-96 md:px-0">
+    <section className="flex w-full flex-col items-center justify-center gap-10 px-4 py-8 2xl:h-dvh">
+      <div className="flex h-full w-full max-w-96 flex-col items-start justify-center gap-10">
         <h1 className="text-xl font-medium">Sign up for an account</h1>
 
         <SignUpForm />

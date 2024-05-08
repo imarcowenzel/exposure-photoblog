@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const LogInPage = () => {
   return (
-    <section className="flex w-full h-full flex-col justify-center gap-10 py-12 md:items-center">
-      <div className="flex flex-col items-start gap-10 px-6 w-full md:max-w-96 md:px-0">
+    <section className="flex w-full h-[calc(100dvh-50px)] md:h-auto lg:h-dvh flex-col justify-center gap-10 px-4 py-8 md:items-center">
+      <div className="flex h-full w-full max-w-96 flex-col items-start gap-10 lg:justify-center">
         <h1 className="text-xl font-medium">Log into your account</h1>
         <LogInForm />
         <Link href="/sign-up" className="text-sm font-semibold hover:underline">

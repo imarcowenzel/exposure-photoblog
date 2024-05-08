@@ -45,12 +45,12 @@ export const SearchForm = () => {
         <FormField
           name="q"
           render={({ field }) => (
-            <FormItem className="relative">
+            <FormItem className="relative space-y-0 lg:space-y-1">
               <FormControl>
                 <Input
                   {...field}
                   placeholder="Search for tags or username"
-                  className="border-none bg-transparent px-0 text-lg outline-none placeholder:text-lg md:text-xl md:placeholder:text-xl lg:text-3xl lg:placeholder:text-3xl"
+                  variant="search"
                 />
               </FormControl>
               <Separator className="h-[2px]" />
