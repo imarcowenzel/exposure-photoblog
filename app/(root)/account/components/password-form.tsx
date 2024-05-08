@@ -114,6 +114,7 @@ export const PasswordForm = ({ user }: Props) => {
               <button
                 type="button"
                 disabled={isLoading}
+                tabIndex={-1}
                 onClick={() => toggleVisibility("newPassword")}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >
@@ -144,6 +145,7 @@ export const PasswordForm = ({ user }: Props) => {
               <button
                 type="button"
                 disabled={isLoading}
+                tabIndex={-1}
                 onClick={() => toggleVisibility("confirmPassword")}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >

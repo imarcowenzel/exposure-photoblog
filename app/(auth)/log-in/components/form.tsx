@@ -117,6 +117,7 @@ export const LogInForm = () => {
                 </FormControl>
                 <span
                   onClick={toggleVisibility}
+                  tabIndex={-1}
                   className="absolute right-3 top-9 z-10 cursor-pointer"
                 >
                   {isPasswordVisible ? (

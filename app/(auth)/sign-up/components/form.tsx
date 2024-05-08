@@ -152,6 +152,7 @@ export const SignUpForm = () => {
               <button
               type="button"
                 onClick={() => toggleVisibility("password")}
+                tabIndex={-1}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >
                 {isPasswordVisible ? (
@@ -183,6 +184,7 @@ export const SignUpForm = () => {
               <button
               type="button"
                 onClick={() => toggleVisibility("confirmPassword")}
+                tabIndex={-1}
                 className="absolute right-3 top-9 z-10 cursor-pointer"
               >
                 {isConfirmPasswordVisible ? (
