@@ -20,7 +20,7 @@ const AccountPage = async () => {
   }
 
   return (
-    <section className="2xl:h-dhv flex w-full flex-col items-center gap-10 px-5 py-8">
+    <section className="flex w-full flex-col items-center gap-10 px-5 py-8 2xl:min-h-dvh">
       <div className="flex w-full max-w-96 flex-col items-center justify-center gap-12">
         <Header />
         <div className="flex w-full flex-col items-center justify-center gap-7">
