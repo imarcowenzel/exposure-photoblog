@@ -4,22 +4,20 @@ import { auth } from "@/lib/auth-options";
 
 const f = createUploadthing();
 
-// FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
-  // Define as many FileRoutes as you like, each with a unique routeSlug
-  imageUploader: f({ image: { maxFileSize: "32MB", maxFileCount: 1 } })
-    // Set permissions and file types for this FileRoute
+  imageUploader: f(
+    { image: { maxFileSize: "32MB", maxFileCount: 1 } },
+    { awaitServerData: true }
+  )
     .middleware(async () => {
-      // This code runs on your server before upload
       const session = await auth();
-
-      // If you throw, the user will not be able to upload
       if (!session) throw new Error("Unauthorized");
 
-      // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { session };
     })
-    .onUploadComplete(async () => {}),
+    .onUploadComplete(async ({ metadata }) => {
+      console.log("Upload completo!", metadata);
+    }),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
