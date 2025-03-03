@@ -15,7 +15,7 @@ type MetadataProps = {
 export async function generateMetadata({
   params,
 }: MetadataProps): Promise<Metadata> {
-  const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
   return {
@@ -30,8 +30,7 @@ type Props = {
 };
 
 const ProfilePage = async ({ params }: Props) => {
-  
-  const url = `${process.env.NEXTAUTH_URL}/api/users/${params.username}`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/users/${params.username}`;
   const res = await axios.get(url);
   const profileUser: UserWithPosts = res.data;
 
@@ -40,7 +39,6 @@ const ProfilePage = async ({ params }: Props) => {
     session?.user.id === profileUser?.id ? true : false;
 
   return (
-
     <section
       className={cn(
         "flex flex-col items-center gap-10 px-4 py-8 lg:min-h-dvh",
@@ -49,7 +47,6 @@ const ProfilePage = async ({ params }: Props) => {
       )}
     >
       <div className="flex h-full max-w-7xl flex-col items-center gap-10 md:w-[95%]">
-
         <Header user={profileUser} />
 
         {profileUser.posts.length !== 0 ? (
@@ -62,7 +59,6 @@ const ProfilePage = async ({ params }: Props) => {
         ) : (
           <NoPostsYets loggedInUserIsOwner={loggedInUserIsOwner} />
         )}
-
       </div>
     </section>
   );

@@ -9,13 +9,11 @@ import { PostsFeed } from "@/components/feed";
 export const revalidate = 0;
 
 const HomePage = async () => {
-
-  const url = `${process.env.NEXTAUTH_URL}/api/posts`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/posts`;
   const res = await axios.get(url);
   const posts: PostWithPhotoAndUser[] = res.data;
 
   return (
-    
     <section
       className={cn(
         "flex flex-col gap-10 px-4 py-8 md:items-center lg:min-h-dvh",
@@ -23,7 +21,6 @@ const HomePage = async () => {
       )}
     >
       <div className="max-w-7xl lg:w-[95%]">
-
         {posts.length !== 0 ? (
           <div className="flex flex-col gap-8 lg:gap-20">
             <div className="flex items-center gap-2">
@@ -38,7 +35,6 @@ const HomePage = async () => {
           <NoPosts />
         )}
       </div>
-      
     </section>
   );
 };

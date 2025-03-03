@@ -11,11 +11,10 @@ type Props = {
 };
 
 const EditPage = async ({ params }: Props) => {
-  
   const session = await auth();
   if (!session) redirect("/log-in");
 
-  const url = `${process.env.NEXTAUTH_URL}/api/posts/${params.postId}`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/posts/${params.postId}`;
   const res = await axios.get(url);
   const post: PostWithPhotoAndUser = res.data;
   if (!post) return NotFound;

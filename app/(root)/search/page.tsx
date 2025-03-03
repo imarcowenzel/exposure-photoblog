@@ -35,7 +35,7 @@ const SearchPage = async ({
   let results = null;
 
   const url = qs.stringifyUrl({
-    url: `${process.env.NEXTAUTH_URL}/api/posts/`,
+    url: `${process.env.NEXT_PUBLIC_URL}/api/posts/`,
     query: {
       q: searchParams.q,
     },
